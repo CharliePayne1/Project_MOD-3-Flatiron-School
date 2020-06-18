@@ -1,0 +1,21 @@
+{"users": [
+    {"username": "Charlie", 
+    "highscores": {
+                    "mario": "100",
+                    "rps": "50",
+                    "snake": "75"}
+    },
+    {"username": "Adao", "highscores": {
+                                            "mario": "150",
+                                            "rps": "66",
+                                            "snake": "50"
+                                                            }
+    },
+    {"username": "Guest", "highscores": {
+                                            "mario": "0",
+                                            "rps": "0",
+                                            "snake": "0"
+                                                            }
+    }
+]
+}

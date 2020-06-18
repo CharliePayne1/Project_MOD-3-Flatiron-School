@@ -91,7 +91,7 @@ img{
 
 .choice:hover {
     cursor: pointer;
-    background: rgb(224, 182, 182);
+    background: rgb(235, 232, 232);
 }
 
 #action-message {
@@ -192,4 +192,6 @@ img{
     height: 80px;
     margin-top: 5px;
     position: absolute;
+    animation: flicker 5s infinite alternate;  
+
 }

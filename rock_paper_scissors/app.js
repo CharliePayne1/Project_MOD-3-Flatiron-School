@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', () => {
+    music.play();
+    main();
+})
+
 let userScore = 0;
 let computerScore =0;
 let userScore_span = document.getElementById('user-score');
@@ -7,6 +12,8 @@ let result_p = document.querySelector('.result > p');
 let rock_div = document.getElementById('r');
 let paper_div = document.getElementById('p');
 let scissors_div = document.getElementById('s');
+let music = new Audio('rock.mp3');
+
 
 function getComputerChoice() {
     const choices = ['r', 'p', 's'] 
@@ -78,6 +85,7 @@ function game(userChoice) {
 }
 
 function main(){
+
 rock_div.addEventListener('click', function(){
     game('r');
 })
@@ -91,4 +99,3 @@ scissors_div.addEventListener('click', function(){
 })
 }
 
-main();

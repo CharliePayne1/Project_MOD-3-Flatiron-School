@@ -34,6 +34,8 @@ body{
     height: 80px;
     margin-top: 5px;
     position: absolute;
+    animation: flicker 5s infinite alternate;  
+
 }
 
 #rock {

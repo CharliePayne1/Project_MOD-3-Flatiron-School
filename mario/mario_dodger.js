@@ -1,16 +1,19 @@
+import { player } from '../home.js';
+
+console.log(player);
+
 // const
 let rock = document.getElementById('rock');
 let dodger = document.getElementById('dodger');
 let userScoreSpan = document.getElementById('user-score');
 const header = document.getElementById('title');
 const newGame = document.querySelector("#new-game");
-// const sound = document.querySelector('#sound');
 const body = document.getElementById('body');
 const startMarioGame = document.getElementById('start-mario');
 const stopMarioGame = document.getElementById('stop-mario');
 const highScore = document.getElementById('high-score');
 
-let startAudio = new Audio("./sounds/retro_arcade.mp3");
+let startAudio = new Audio("./sounds/mario-music.mp3");
 let loseAudio = new Audio("./sounds/lose_sound.wav");
 
 startMarioGame.addEventListener('click', () => startGame());
@@ -85,15 +88,11 @@ const collision = () => {
   return false
 }
 
-// add retro music 
-const backgroundMusic = () => {
-}
-
 function createNewGameButton() {
   const newGameButton =  document.createElement('button');
   newGameButton.id = "new-game";
   newGameButton.classList.add("btn", "btn-success");
-  newGameButton.innerText = 'New Game???'
+  newGameButton.innerText = 'New Game'
   return newGameButton
 }
 
@@ -108,10 +107,7 @@ const createDivAlert = () => {
   const newGameButton = createNewGameButton();
   spanAlert.append(newGameButton)
 
-  newGameButton.addEventListener('click', () => {
-    startGame()
-    newGameButton.parentNode.remove();
-  })
+  newGameButton.addEventListener('click', () => document.location.reload())
   
   header.append(spanAlert);
 }
