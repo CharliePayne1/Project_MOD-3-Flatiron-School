@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-music.play();
+// music.play();
 })
+const URL = `http://localhost:3000/users`
+
+let player = JSON.parse(localStorage.getItem('player'));
+
+const highScore = document.getElementById('high-score')
+highScore.innerText = player.highscores.snake
 
 const cvs = document.getElementById('snake');
 
@@ -116,10 +122,12 @@ document.addEventListener('keydown', (e) => direction(e))
 
 function finishGame() {
     gameOver.play();
+    // createDivAlert();
+    if (score > player.highscores.snake ) {
+        player.highscores.snake = score;
+        updateUserDatabase();
+    }
     clearInterval(game);
-    const header = document.querySelector('header')
-    createDivAlert();
-
 }
 
 function createNewGameButton() {
@@ -143,5 +151,27 @@ function createNewGameButton() {
     const newGameButton = createNewGameButton();
     spanAlert.append(newGameButton)
     
-    document.getElementById("back-to-home").append(spanAlert);
+    highScore.append(spanAlert);
+  }
+  
+  function updateUserDatabase() {
+    let object = { 
+      highscores: player.highscores
+    };
+    debugger
+    let configObject = {
+    method: 'PATCH',
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
+    body: JSON.stringify(object)
+    };
+    
+    fetch(`${URL}/${player.id}`, configObject)
+    .then(resp => resp.json())
+    .then(player => { 
+      window.localStorage.setItem('player', JSON.stringify(player))
+      highScore.innerText = player.highscores.snake })
+    .catch(error => console.log(error));
   }

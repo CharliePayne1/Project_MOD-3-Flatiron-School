@@ -1,21 +1,31 @@
-{"users": [
-    {"username": "Charlie", 
-    "highscores": {
-                    "mario": "100",
-                    "rps": "50",
-                    "snake": "75"}
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Charlie",
+      "highscores": {
+        "mario": 100,
+        "rps": 50,
+        "snake": 75
+      }
     },
-    {"username": "Adao", "highscores": {
-                                            "mario": "150",
-                                            "rps": "66",
-                                            "snake": "50"
-                                                            }
+    {
+      "id": 2,
+      "username": "Adao",
+      "highscores": {
+        "mario": 150,
+        "rps": 66,
+        "snake": 50
+      }
     },
-    {"username": "Guest", "highscores": {
-                                            "mario": "0",
-                                            "rps": "0",
-                                            "snake": "0"
-                                                            }
+    {
+      "id": 3,
+      "username": "Guest",
+      "highscores": {
+        "mario": 12,
+        "rps": 0,
+        "snake": 2
+      }
     }
-]
+  ]
 }

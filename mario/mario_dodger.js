@@ -1,17 +1,20 @@
-import { player } from '../home.js';
-
-console.log(player);
 
 // const
+const URL = `http://localhost:3000/users`
+
 let rock = document.getElementById('rock');
 let dodger = document.getElementById('dodger');
-let userScoreSpan = document.getElementById('user-score');
 const header = document.getElementById('title');
 const newGame = document.querySelector("#new-game");
 const body = document.getElementById('body');
 const startMarioGame = document.getElementById('start-mario');
 const stopMarioGame = document.getElementById('stop-mario');
-const highScore = document.getElementById('high-score');
+let highScore = document.getElementById('high-score');
+let userScoreSpan = document.getElementById('user-score');
+
+let player = JSON.parse(localStorage.getItem('player'));
+
+highScore.innerText = player.highscores.mario
 
 let startAudio = new Audio("./sounds/mario-music.mp3");
 let loseAudio = new Audio("./sounds/lose_sound.wav");
@@ -19,12 +22,10 @@ let loseAudio = new Audio("./sounds/lose_sound.wav");
 startMarioGame.addEventListener('click', () => startGame());
 
 
-
 // make rock fall
 let randomCoordinate = () => Math.floor((Math.random()*(600-rockWidth)))
 
 const startGame = () => {
-  debugger
   startAudio.play();
   userScoreSpan.innerText = 0
   const timeUp = window.setInterval(() => {userScoreSpan.innerText ++}, 1000);
@@ -102,14 +103,14 @@ const createDivAlert = () => {
   divAlert.classList.add('alert');
   divAlert.classList.add('alert-danger')
   divAlert.setAttribute("role", "alert");
-  divAlert.innerText = `You got crushed by the rock. Game Over!`;
+  divAlert.innerText = `Game Over!`;
   spanAlert.append(divAlert);
   const newGameButton = createNewGameButton();
   spanAlert.append(newGameButton)
 
   newGameButton.addEventListener('click', () => document.location.reload())
   
-  header.append(spanAlert);
+  userScoreSpan.append(spanAlert);
 }
 
 const finishGame = (intervalId, timeUp, userScoreSpan) => {
@@ -117,5 +118,31 @@ const finishGame = (intervalId, timeUp, userScoreSpan) => {
   createDivAlert();
   clearInterval(intervalId)
   clearInterval(timeUp);
+  if (userScoreSpan.innerText > player.highscores.mario ) { 
+    player.highscores.mario = parseInt(userScoreSpan.innerText);
+    updateUserDatabase(player, userScoreSpan);
+  }
 }
 
+function updateUserDatabase(player) {
+  // debugger
+  let object = { 
+    highscores: player.highscores
+  };
+  // debugger
+  let configObject = {
+  method: 'PATCH',
+  headers: {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+  },
+  body: JSON.stringify(object)
+  };
+  
+  fetch(`${URL}/${player.id}`, configObject)
+  .then(resp => resp.json())
+  .then(player => { 
+    window.localStorage.setItem('player', JSON.stringify(player))
+    highScore.innerText = player.highscores.mario })
+  .catch(error => console.log(error));
+}

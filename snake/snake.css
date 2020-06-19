@@ -12,6 +12,18 @@ body{
 
 }
 
+#high-score-board{
+  text-align: center;
+  color: white;
+  font-size: xx-large;
+  margin-left: 1000px;
+  width: 150px;
+  height: 100px;
+  margin-top: 10px;
+  position: absolute;
+  animation: flicker 5s infinite alternate; 
+}
+
 :root {
     /* Base font size */
     font-size: 8px;   
