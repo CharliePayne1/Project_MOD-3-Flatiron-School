@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getUsers().then(users => {
             player = (users.find(user => user.username === playerString))
             choices.style.display = 'block';
-            header.innerText = `Welcome ${player.username}, pick a game!`
+            header.innerText = `Hello ${player.username}, pick a game!`
             // debugger
             marioScore.innerText = `Mario-Dodger! \n High-Score: ${player.highscores.mario}`  
             rockScore.innerText = `Rock-Paper-Scissors! \n High-Score: ${player.highscores.rps}`  

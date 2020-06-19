@@ -71,7 +71,7 @@ function collision(newHead, snake) {
 const draw = () => {
     ctx.drawImage(stage, 0, 0);
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i === 0 )? 'black' : 'white'
+        ctx.fillStyle = (i === 0 )? 'yellow' : 'black'
         ctx.fillRect(snake[i].x, snake[i].y, BOX, BOX);
 
         ctx.strokeStyle = "dark green";
