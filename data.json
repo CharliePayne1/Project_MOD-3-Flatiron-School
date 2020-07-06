@@ -1,19 +1,31 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "username": "Charlie",
+      "highscores": {
+        "mario": 100,
+        "rps": 50,
+        "snake": 75
+      }
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "username": "Adao",
+      "highscores": {
+        "mario": 150,
+        "rps": 66,
+        "snake": 50
+      }
+    },
+    {
+      "id": 3,
+      "username": "Guest",
+      "highscores": {
+        "mario": 12,
+        "rps": 0,
+        "snake": 4
+      }
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
